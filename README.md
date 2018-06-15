@@ -1,6 +1,6 @@
 # Gemfire Node.js Sample
 
-ALPHA CODE
+This brahch (node_0.10.x) is ALPHA CODE that was put together as an initial test.  Everything on this branch is deprecated.
 
 ## How to play around with the NodeJS GemFire driver.
 
