@@ -7,6 +7,8 @@ bin
 lib
 *.gfs
 .history/*
+data/
+package-lock.json
 
 
 ####  Standard excludes
