@@ -5,9 +5,9 @@
   "main": "src/server.js",
   "dependencies": {
     "express": "^4.17.1",
-    "gemfire": "^2.0.0",
-    "jsonpath-plus": "^1.1.0",
-    "jsonpath": "^1.0.2"
+    "gemfire": "file:../../../../Downloads/gemfire-node-all-v2.0.0-build.71.tgz",
+    "jsonpath": "^1.0.2",
+    "jsonpath-plus": "^1.1.0"
   },
   "devDependencies": {},
   "scripts": {

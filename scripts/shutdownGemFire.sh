@@ -18,7 +18,7 @@ cd "`dirname \"$PRG\"`/.." >&-
 APP_HOME="`pwd -P`"
 cd "$SAVED" >&-
 
-HOSTNAME=`hostname`
+HOSTNAME=localhost
 LOCATORS="${HOSTNAME}[10334],${HOSTNAME}[10335]"
 
 # --J=-Dlog4j.configurationFile=${APP_HOME}/etc/log4j.xml

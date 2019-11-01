@@ -21,7 +21,7 @@ async function init(){
     console.log("username - >" + username + "< password - >" + password + "<")
     console.log("locators - " + locators)
 
-    cacheFactory = gemfire.createCacheFactory();
+    cacheFactory = gemfire.createCacheFactory("", "workaround.xml");
     cacheFactory.setAuthentication((properties, server) => {
         console.log("Set auth called!")
         console.log("username - >" + username + "< password - >" + password + "<")
@@ -60,7 +60,14 @@ app.put(['/book/put'], async (req, res) => {
         initialized: true
     });
 });
+app.put(['/book/removeall'], async (req, res) => {
 
+    var keys = await region.keys();
+    await region.removeAll(keys)
+    res.json({
+        initialized: true
+    });
+});
 app.get('/env', (req, res) => {
     res.json(process.env);
 });
