@@ -9,8 +9,7 @@ lib
 .history/*
 data/
 package-lock.json
-
-
+gemfire-nodejs*.tgz
 ####  Standard excludes
 
 *~
