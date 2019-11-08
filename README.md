@@ -64,25 +64,38 @@ Please reviewe the manifest and at minimum update or change the service instance
 
 ## Create the Cloud Cache service instance
 
-So if you haven't created a Cloud Cache service instance go and create one now.    Using the command line or browser interface create a Cloud Cache instance and it corrisponding service key
-
-## Create the Region that the application will use
-
-A region is the main storage concept in GemFire/Cloud Cache.   So before we can store books we need to create a region.   Review your service ket that you have created - the JSON element `gfsh_login_string` will have the text you need to type into gfsh to connect.    From our above `VCAP_SERVICES` example we can see that string as `connect --url=https://localhost:7070/gemfire/v1 --user=super-user --password=1234567 --skip-ssl-validation`.   Just make sure to download the right version of GemFire to connect to your systems Cloud Cache.
+1 -  Create a cloud cache instance in Pivotal Cloud Foundary.   The manifest assumes that the cloud cache instance is called `cloudcache-dev`.
+```
+$ cf create-service p-cloudcache dev-plan cloudcache-dev
+```
+2 - Create the service key 
+```
+$ cf create-service-key cloudcache-dev cloudcache-dev_service_key
+```
+3 - Using the GemFire command line tool ``gfsh`` create the region with the policy that we want for the data.
 
 ```
-gfsh
-connect --url=https://localhost:7070/gemfire/v1 --user=super-user --password=1234567 --skip-ssl-validation
-create region --name=owin_example --type=PARTITION
-```
+voltron:gemfire cblack$ gfsh
+    _________________________     __
+   / _____/ ______/ ______/ /____/ /
+  / /  __/ /___  /_____  / _____  / 
+ / /__/ / ____/  _____/ / /    / /  
+/______/_/      /______/_/    /_/  
 
-## Push the NodeJS application
+Monitor and Manage Pivotal GemFire
+gfsh>connect --use-http=true --url=https://somehost/gemfire/v1 --user=cluster_operator --password=*****
 
-```
-cd <project>
-cf push
-```
+Successfully connected to: GemFire Manager HTTP service @ https://somehost/gemfire/v1
+gfsh>create region --name=test --type=PARTITION
+                     Member                      | Status
+------------------------------------------------ | -----------------------------------------------------------------------------------
+cacheserver-7541bb25-71b2-4ae7-ad80-9d518e18facd | Region "/test" created on "cacheserver-7541bb25-71b2-4ae7-ad80-9d518e18facd"
 
+Cluster-0 gfsh>exit
+```
+Note: The version of Cloud Cache I am using is backed by GemFire version 9.8.3 - make sure you are using the same versions of GemFire as your cloud cache instance.
+
+4 -`cf push` the application and give it a try using postman or curl.
 
 ## Add a book 
 ```
