@@ -1,7 +1,7 @@
 Example book service
 
 # Install 
-In the future the download location one would goto either the GemFire or Cloud Cache product download pages in https://network.pivotal.io  Since we are currently in a phase where the binaries aren't offfically avaible I can't post a image of how to download.
+In the future the download location one would goto either the GemFire or Cloud Cache product download pages in https://network.pivotal.io  Since we are currently in a phase where the binaries aren't offfically available I can't post a image of how to download.
 
 
 * GemFire - https://network.pivotal.io/products/pivotal-gemfire
