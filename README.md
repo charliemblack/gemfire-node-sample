@@ -54,7 +54,7 @@ $ node src/server.js
 
 ```
 curl -X PUT \
-  'https://cloudcache-node-sample.apps.pcfone.io/book/put?isbn=0525565329' \
+  'http://localhost:8080/book/put?isbn=0525565329' \
   -H 'Content-Type: application/json' \
   -d '{
   "FullTitle": "The Shining",
@@ -68,9 +68,7 @@ curl -X PUT \
 
 ```
 curl -X GET \
-  'https://cloudcache-node-sample.apps.pcfone.io/book/get?isbn=0525565329' \
-  -H 'Content-Type: application/json' 
-
+  'http://localhost:8080/book/get?isbn=0525565329' 
 ```
 
 # Push the app
