@@ -116,3 +116,18 @@ Push-Location $APP_HOME/data/server1
 gfsh -e "connect --locator=$LOCATORS --security-properties-file=$APP_HOME/etc/gfsecurity.properties" -e "create region --name=test --type=PARTITION"
 
 Pop-Location
+
+#curl -X PUT "http://localhost:8080/book/put?isbn=0525565329" `
+#  -H "Content-Type: application/json" `
+#  -d "{
+#  "FullTitle": "The Shining",
+#  "ISBN": "0525565329",
+#  "MSRP": "9.99",
+#  "Publisher": "Anchor",
+#  "Authors": "Stephen King"
+#}"
+
+curl -X PUT "http://localhost:8080/book/put?isbn=0525565329" -H "Content-Type: application/json" -d "{FullTitle: The Shining,ISBN: 0525565329,MSRP: 9.99,Publisher: Anchor,Authors: Stephen King}"
+#curl -X PUT http://localhost:8080/book/put?isbn=0525565329 -d "{\"FullTitle\": \"The Shining\",\"ISBN\": \"0525565329\",\"MSRP\": \"9.99\",\"Publisher\": \"Anchor\",\"Authors\": \"Stephen King\"}"
+
+#curl -X GET http://localhost:8080/book/get?isbn=0525565329

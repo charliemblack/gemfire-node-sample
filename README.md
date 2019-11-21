@@ -36,10 +36,12 @@ Cloud Foundry injects the services binding through a `VCAP_SERVICES` environment
 ## Expose the VCAP_SERVICES to the application through the environment 
 ```
 export VCAP_SERVICES='{"p-cloudcache":[{"label":"p-cloudcache","provider":null,"plan":"dev-plan","name":"pcc-dev","tags":["gemfire","cloudcache","database","pivotal"],"instance_name":"pcc-dev","binding_name":null,"credentials":{"distributed_system_id":"0","gfsh_login_string":"connect --url=https://localhost:7070/gemfire/v1 --user=super-user --password=1234567 --skip-ssl-validation","locators":["localhost[10334]"],"urls":{"gfsh":"https://localhost:7070/gemfire/v1","pulse":"https://localhost:7070/pulse"},"users":[{"password":"1234567","roles":["cluster_operator"],"username":"super-user"},{"password":"1234567","roles":["developer"],"username":"app"}],"wan":{"sender_credentials":{"active":{"password":"no-password","username":"no-user"}}}},"syslog_drain_url":null,"volume_mounts":[]}]}'
-```
+
+Note: On Windows replace export with set.
+````
 ## Run some servers 
 
-The scripts directory contains `startGemFire.sh`, which will start up
+The scripts directory contains `startGemFire.sh` (and `startGemFire.ps1` for Windows), which will start up
 two locators and two cache servers.
 The locators allow clients to find the cache servers.
 To simplify local development, script also creates the regions.
