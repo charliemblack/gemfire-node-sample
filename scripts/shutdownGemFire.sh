@@ -18,12 +18,12 @@ cd "`dirname \"$PRG\"`/.." >&-
 APP_HOME="`pwd -P`"
 cd "$SAVED" >&-
 
-HOSTNAME=`hostname`
-LOCATORS="${HOSTNAME}[10334],${HOSTNAME}[10335]"
+HOSTNAME=localhost
+LOCATORS="${HOSTNAME}[10334]"
 
 # --J=-Dlog4j.configurationFile=${APP_HOME}/etc/log4j.xml
 pushd ${APP_HOME}/data/locator4 > /dev/null
 
-gfsh -e "connect --locator=${LOCATORS} --security-properties-file=${APP_HOME}/etc/gfsecurity-two-way.properties" -e "shutdown --include-locators=true --time-out=15"
+gfsh -e "connect --locator=${LOCATORS} --security-properties-file=${APP_HOME}/etc/gfsecurity.properties" -e "shutdown --include-locators=true --time-out=15"
 
 popd > /dev/null
